@@ -5,14 +5,9 @@ def run():
     from sklearn.preprocessing import RobustScaler
     import numpy as np
 
+    col1 , col2, col3 = st.columns([1,1.5,1])
     
-    st.markdown("# Prediction App")
-    
-    st.sidebar.header("Use Slider Below For Input")
-    
-    st.write("""
-    This app predicts the **heart attack** of a person based on medical features!
-    """)
+    st.sidebar.markdown("Use Slider Below For Input")
     
 # Sidebar slider for user input features
     def user_input_features():
@@ -70,24 +65,32 @@ def run():
     df[con_cols] = scaler.fit_transform(df[con_cols])
     df = df[:1]
     
-    # Displays the user input features
-    st.subheader('User Input features')
-    
-    st.write(input_df)
-    
-    # Reads in saved classification model
-    load_clf = pk.load(open('stlib/models/rf.pkl', 'rb'))
-    
-    # Apply model to make predictions
-    prediction = load_clf.predict(df)
-    prediction_proba = load_clf.predict_proba(df)
-    
-    st.subheader('Prediction')
-    heart_output = np.array(['< 50%% diameter narrowing. less chance of heart disease ','> 50%% diameter narrowing. more chance of heart disease'])
-    st.write(heart_output[prediction])
-    
-    st.subheader('Prediction Probability')
-    st.write(prediction_proba)
+    with col2:
+        st.markdown("# Chance of Heart Attack Prediction App")
+        
+        st.write("""
+        This app predicts the **chances of heart attack** of a person based on medical features.
+        Use the slider on the left for each features to see the outcome.
+        """)
+        
+        # Displays the user input features
+        st.subheader('Your Input Features')
+        
+        st.write(input_df)
+        
+        # Reads in saved classification model
+        load_clf = pk.load(open('stlib/models/rf.pkl', 'rb'))
+        
+        # Apply model to make predictions
+        prediction = load_clf.predict(df)
+        prediction_proba = load_clf.predict_proba(df)
+        
+        st.subheader('Prediction Outcome')
+        heart_output = np.array(['< 50%% diameter narrowing. less chance of heart disease ','> 50%% diameter narrowing. more chance of heart disease'])
+        st.write(heart_output[prediction])
+        
+        st.subheader('Prediction Probability')
+        st.write(prediction_proba)
     
 # This code allows you to run the app standalone
 # as well as part of a library of apps
