@@ -18,7 +18,7 @@ def run():
         )
     
     with col2:
-        st.image(Image.open('assets\info_graph_1.png'))
+        st.image(Image.open('assets/info_graph_1.png'))
             
     st.sidebar.header("Overview Sidebar")
 
