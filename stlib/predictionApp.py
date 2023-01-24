@@ -65,6 +65,8 @@ def run():
     df[con_cols] = scaler.fit_transform(df[con_cols])
     df = df[:1]
     
+    st.write("[Kaggle Link to Data Set](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset)")
+    
     with col2:
         st.markdown("# Chance of Heart Attack Prediction App")
         
@@ -79,7 +81,7 @@ def run():
         st.write(input_df)
         
         # Reads in saved classification model
-        load_clf = pk.load(open('stlib/models/rf.pkl', 'rb'))
+        load_clf = pk.load(open('stlib/models/lr.pkl', 'rb'))
         
         # Apply model to make predictions
         prediction = load_clf.predict(df)
@@ -91,6 +93,12 @@ def run():
         
         st.subheader('Prediction Probability')
         st.write(prediction_proba)
+
+        feedback = st.sidebar.slider('How much would you rate this app?',min_value=0,max_value=5,step=1)
+
+        if feedback:
+            st.header("Thank you for rating the app!")
+            st.info("Caution: This is just a prediction and not doctoral advice. Kindly see a doctor if you feel the symptoms persist.")   
     
 # This code allows you to run the app standalone
 # as well as part of a library of apps
