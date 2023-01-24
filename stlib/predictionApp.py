@@ -25,11 +25,11 @@ def run():
         fbs = st.sidebar.slider('FASTING BLOOD SUGAR > 120 MG/DL', 0,1,1)
         restecg = st.sidebar.slider('RESTING ELECTROCARDIOGRAPHIC RESULTS)', 0,2,1)
         thalachh = st.sidebar.slider('MAXIMUM HEART RATE ACHIEVED', 90.0,210.0,153.0)
-        exng = st.sidebar.slider('exercise induced angina ', 0,1,0)
+        exng = st.sidebar.slider('EXERCISE INDUCED ANGINA ', 0,1,0)
         oldpeak = st.sidebar.slider('ST depression induced by exercise relative to rest', 0.0,5.0,0.8)
         slp = st.sidebar.slider('slope of the peak exercise ST segment', 0,2,1) 
-        caa = st.sidebar.slider('number of major vessels', 0,4,1)
-        thall = st.sidebar.slider('thalassemia', 0,3,1)
+        caa = st.sidebar.slider('NUMBER OF MAJOR VESSELS', 0,4,1)
+        thall = st.sidebar.slider('THALASSEMIA', 0,3,1)
             
         data = {'age': age,
                 'sex': sex,
