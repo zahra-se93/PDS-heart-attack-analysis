@@ -1,24 +1,28 @@
 def run():
     import streamlit as st
     from PIL import Image
+    import time
     
-    col1 , col2 = st.columns(2)
-    with col1:
-        st.markdown("# Overview Page")
+    # st.markdown("# Overview")
+        
+    x,y,z = st.columns([1,0.9,1])
+    col1 , col2, col3 = st.columns([1,2,1])
+    
+    
+    with y:
+        st.markdown("![Alt Text](https://media.giphy.com/media/8cBhJBU2wlq6H6qY4W/giphy.gif)")
+    with col2:
+        
         st.write(
         """
-                Data mining is useful for studying and understanding a large amount of data. It is used for the extraction of data and to make the decision for further applications.Machine learning usage is growing vastly in the medical diagnosis industry, where the manual error can be reduced with computer analysis, and accuracy is improved. The diagnosis of a disease is highly reliable with machine learning techniques.
+            Cardiovascular diseases (CVDs) are the number 1 cause of death globally, taking an estimated 17.9 million lives each year, which accounts for 31% of all deaths worldwide. Four out of 5CVD deaths are due to heart attacks and strokes, and one-third of these deaths occur prematurely in people under 70 years of age. Heart failure is a common event caused by CVDs and this dataset contains 11 features that can be used to predict a possible heart disease.
 
-                Care and improvement of the unwellness by the help of identification, hindrance, and care of any kind of illness is HealthCare. Healthcare plays an important function in Big Data. But a major dispute is to render improved care and clinical services at an inexpensive value. By diverse predictive analysis, the expense will diminish and can get improved clinical care. 
+            People with cardiovascular disease or who are at high cardiovascular risk (due to the presence of one or more risk factors such as hypertension, diabetes, hyperlipidaemia or already established disease) need early detection and management wherein a machine learning model can be of great help.
 
-                Heart disease causes a significant mortality rate around the world, and it has become a health threat for many people. Early prediction of heart disease may save many lives; detecting cardiovascular diseases like heart attacks, coronary artery diseases etc., isa critical challenge by the regular clinical data analysis. Machine learning can bring an effective solution for decision making and accurate predictions. The medical industry is showing enormous development in using machine learning techniques.
-
-                Heart attack prediction model is suitable for all types of medical institutions to assist doctors in predicting heart disease and helping patients to better manage their heart disease. It can help doctors to better monitor their conditions and save patients' lives through prognosis, further improving the doctor-patient relationship and promoting the development of medical and healthcare in society.
         """
         )
-    
-    with col2:
         st.image(Image.open('assets/info_graph_1.png'))
+    
             
     st.sidebar.header("Overview Sidebar")
 
