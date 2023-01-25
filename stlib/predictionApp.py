@@ -137,7 +137,7 @@ def run():
         st.subheader('Prediction Probability')
         st.write(prediction_proba)
 
-        feedback = st.sidebar.slider('How much would you rate this app?',min_value=0,max_value=5,step=1)
+        feedback = st.sidebar.slider('**How much would you rate this app?**',min_value=0,max_value=5,step=1)
 
         if feedback:
             st.header("Thank you for rating the app!")
