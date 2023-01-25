@@ -110,8 +110,6 @@ def run():
     df[con_cols] = scaler.fit_transform(df[con_cols])
     df = df[:1]
     
-    st.write("[Kaggle Link to Data Set](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset)")
-    
     with col2:
         st.markdown("# Chance of Heart Attack Prediction App")
         
@@ -143,7 +141,9 @@ def run():
 
         if feedback:
             st.header("Thank you for rating the app!")
-            st.info("Caution: This is just a prediction and not doctoral advice. Kindly see a doctor if you feel the symptoms persist.")   
+            st.info("Caution: This is just a prediction and not doctoral advice. Kindly see a doctor if you feel the symptoms persist.")
+        
+        st.write("[Kaggle Link to Data Set](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset)")
     
 # This code allows you to run the app standalone
 # as well as part of a library of apps
