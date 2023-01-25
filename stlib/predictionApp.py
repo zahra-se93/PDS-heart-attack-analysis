@@ -25,11 +25,11 @@ def run():
         fbs = st.sidebar.slider('FASTING BLOOD SUGAR > 120 MG/DL', 0,1,1)
         restecg = st.sidebar.slider('RESTING ELECTROCARDIOGRAPHIC RESULTS)', 0,2,1)
         thalachh = st.sidebar.slider('MAXIMUM HEART RATE ACHIEVED', 90.0,210.0,153.0)
-        exng = st.sidebar.slider('exercise induced angina ', 0,1,0)
+        exng = st.sidebar.slider('EXERCISE INDUCED ANGINA ', 0,1,0)
         oldpeak = st.sidebar.slider('ST depression induced by exercise relative to rest', 0.0,5.0,0.8)
         slp = st.sidebar.slider('slope of the peak exercise ST segment', 0,2,1) 
-        caa = st.sidebar.slider('number of major vessels', 0,4,1)
-        thall = st.sidebar.slider('thalassemia', 0,3,1)
+        caa = st.sidebar.slider('NUMBER OF MAJOR VESSELS', 0,4,1)
+        thall = st.sidebar.slider('THALASSEMIA', 0,3,1)
             
         data = {'age': age,
                 'sex': sex,
@@ -65,6 +65,8 @@ def run():
     df[con_cols] = scaler.fit_transform(df[con_cols])
     df = df[:1]
     
+    st.write("[Kaggle Link to Data Set](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset)")
+    
     with col2:
         st.markdown("# Chance of Heart Attack Prediction App")
         
@@ -79,7 +81,7 @@ def run():
         st.write(input_df)
         
         # Reads in saved classification model
-        load_clf = pk.load(open('stlib/models/rf.pkl', 'rb'))
+        load_clf = pk.load(open('stlib/models/lr.pkl', 'rb'))
         
         # Apply model to make predictions
         prediction = load_clf.predict(df)
@@ -91,6 +93,12 @@ def run():
         
         st.subheader('Prediction Probability')
         st.write(prediction_proba)
+
+        feedback = st.sidebar.slider('How much would you rate this app?',min_value=0,max_value=5,step=1)
+
+        if feedback:
+            st.header("Thank you for rating the app!")
+            st.info("Caution: This is just a prediction and not doctoral advice. Kindly see a doctor if you feel the symptoms persist.")   
     
 # This code allows you to run the app standalone
 # as well as part of a library of apps
