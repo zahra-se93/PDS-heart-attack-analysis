@@ -7,29 +7,74 @@ def run():
 
     col1 , col2, col3 = st.columns([1,1.5,1])
     
-    st.sidebar.markdown("Use Slider Below For Input")
+    st.sidebar.markdown("Fill Your Input Features Here:")
     
 # Sidebar slider for user input features
     def user_input_features():
-        age = st.sidebar.slider('Age', 18,100,30)
+        age = st.sidebar.slider('**Age**', 18,100,30)
         
-        sexCat = st.sidebar.selectbox('Sex',('male','female'))
-        if sexCat == 'male':
+        sexCat = st.sidebar.selectbox('Sex',('Male','Female'))
+        if sexCat == 'Male':
             sex = 1
         else:
             sex = 0
+        
+        cpSelect = st.sidebar.selectbox('**Chest Pain Type**',('Typical Angina','Atypical Angina', 'Non-Anginal Pain', 'Asymptomatic'))
+        if cpSelect == 'Typical Angina':
+            cp = 0
+        elif cpSelect == 'Atypical Angina':
+            cp = 1
+        elif cpSelect == 'Non-Anginal Pain':
+            cp = 2
+        else:
+            cp = 3
             
-        cp = st.sidebar.slider('Chest Pain Type', 0,3,2)
-        trtbps = st.sidebar.slider('RESTING BLOOD PRESSURE IN (MM|HG)', 100,200,125)
-        chol = st.sidebar.slider('CHOLESTROL IN (MG|DL)', 100.0,450.0,130.0)
-        fbs = st.sidebar.slider('FASTING BLOOD SUGAR > 120 MG/DL', 0,1,1)
-        restecg = st.sidebar.slider('RESTING ELECTROCARDIOGRAPHIC RESULTS)', 0,2,1)
-        thalachh = st.sidebar.slider('MAXIMUM HEART RATE ACHIEVED', 90.0,210.0,153.0)
-        exng = st.sidebar.slider('EXERCISE INDUCED ANGINA ', 0,1,0)
-        oldpeak = st.sidebar.slider('ST depression induced by exercise relative to rest', 0.0,5.0,0.8)
-        slp = st.sidebar.slider('slope of the peak exercise ST segment', 0,2,1) 
-        caa = st.sidebar.slider('NUMBER OF MAJOR VESSELS', 0,4,1)
-        thall = st.sidebar.slider('THALASSEMIA', 0,3,1)
+        trtbps = st.sidebar.slider('**Resting Blood Pressure (MM|HG)**', 100,200,125)
+        chol = st.sidebar.slider('Cholestrol (MG|DL)', 100.0,450.0,130.0)
+            
+        fastBlood = st.sidebar.selectbox('**Fasting Blood Sugar > 120 MG/DL**',('False','True'))
+        if fastBlood == 'False':
+            fbs = 0
+        else:
+            fbs = 1
+        
+        restecgSelect = st.sidebar.selectbox('**Resting Electrocardiographic Results**',('Normal','Having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)', 'Showing probable or definite left ventricular hypertrophy by Estes criteria'))
+        if restecgSelect == 'Normal':
+            restecg = 0
+        elif restecgSelect == 'Having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)':
+            restecg = 1
+        else:
+            restecg = 2
+        
+        thalachh = st.sidebar.slider('**Maximum Heart Rate Achieved**', 90.0,210.0,153.0)
+            
+        exngSelect = st.sidebar.selectbox('**Exercise Induced Angina**',('False','True'))
+        if exngSelect == 'False':
+            exng = 0
+        else:
+            exng = 1
+        
+        oldpeak = st.sidebar.slider('**ST depression induced by exercise relative to rest**', 0.0,5.0,0.8)
+        
+        slpSelect = st.sidebar.selectbox('**Slope of the peak exercise ST segment**',('Unsloping','Flat', 'Downsloping'))
+        if slpSelect == 'Unsloping':
+            slp = 0
+        elif slpSelect == 'Flat':
+            slp = 1
+        else:
+            slp = 2
+        
+        caa = st.sidebar.slider('**Number Of Major Vessels**', 0,4,1)
+        
+        thallSelect = st.sidebar.selectbox('**Thalassemia**',('Null','Fixed Defect', 'Normal', 'Reversable Defect'))
+        if thallSelect == 'Null':
+            thall = 0
+        elif thallSelect == 'Fixed Defect':
+            thall = 1
+        elif thallSelect == 'Normal':
+            thall = 2
+        else:
+            thall = 3
             
         data = {'age': age,
                 'sex': sex,
