@@ -12,7 +12,7 @@ def run():
             """
     )
     
-    tab1,tab2,tab3 = st.tabs(['CountPlot','Plot2', 'Plot3' ])
+    tab1,tab2,tab3,tab4 = st.tabs(['Kernel Distribution Estimation Plot','Box Plot', 'Count Plot', 'Correlation Heatmap'])
     
     heart_raw = pd.read_csv('dataset/heart_cleaned.csv')
     
@@ -344,7 +344,14 @@ def run():
             ax8.spines[s].set_visible(False)
     
         st.pyplot(fig)
-    
+        
+    with tab4:
+        cor_mat=heart_raw.corr()
+        fig,ax=plt.subplots(figsize=(15,10))
+        sns.heatmap(cor_mat,annot=True,linewidths=0.5,fmt=".3f")
+
+        st.write(fig)
+              
     st.sidebar.header("Findings Sidebar")
 
 # This code allows you to run the app standalone
