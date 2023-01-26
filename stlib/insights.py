@@ -6,9 +6,10 @@ def run():
     import warnings
     warnings.filterwarnings("ignore")
 
-    st.markdown("# Findings")
+    st.markdown("# Heart Attack Insights")
     st.write("""
-             Write about the findings we found for Heart Attack Analysis
+            Based on this dataset: [Kaggle](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset), our
+            Data Scientist team have conducted several exploratory analysis. Below are our findings.
             """
     )
     

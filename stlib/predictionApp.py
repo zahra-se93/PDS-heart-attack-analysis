@@ -111,16 +111,18 @@ def run():
     df = df[:1]
     
     with col2:
-        st.markdown("# Chance of Heart Attack Prediction App")
+        st.markdown("# Heart Disease Prediction")
         
         st.write("""
-        This app predicts the **chances of heart attack** of a person based on medical features.
-        Use the slider on the left for each features to see the outcome.
+        This app predicts the **chances to have a heart disease** of a person based on medical features.
+        The machine learning model was trained using [Heart Attack Dataset](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset).
+        Use the slider on the left for each features to see the outcome. If you are a patient, please
+        refer with an expert to obtain certain type of data for the prediction.
         """)
         
         # Displays the user input features
         st.subheader('Your Input Features')
-        
+        st.markdown('*Table below shows overall values of your input features from the sidebar*')
         st.write(input_df)
         
         # Reads in saved classification model
@@ -131,10 +133,18 @@ def run():
         prediction_proba = load_clf.predict_proba(df)
         
         st.subheader('Prediction Outcome')
-        heart_output = np.array(['< 50%% diameter narrowing. less chance of heart disease ','> 50%% diameter narrowing. more chance of heart disease'])
-        st.write(heart_output[prediction])
+        if prediction == 0:
+            st.success('Based on the input features prediction, you are **less likely** to have a Heart Disease. Congrats!', icon="✅")
+            st.markdown("![Healthy heart](https://media.giphy.com/media/34uVCLrYC6vf7FxP2n/giphy.gif)")
+        else:
+            st.error('Based on the input features prediction, you are **more likely** to have a Heart Disease. Please refer to an expert.', icon="⚠️")
+            st.markdown("![Sick heart](https://media.giphy.com/media/kIS1NBIphAbrmDwAva/giphy.gif)")
+            
+        # heart_output = np.array(['Based on the prediction, you are less likely to have a Heart Disease','Based on the prediction, you are more likely to have a Heart Disease. Please refer to an expert.'])
+        # st.write(heart_output[prediction])
         
         st.subheader('Prediction Probability')
+        st.markdown('*Table below shows the percentage of the prediction to be positive or negative as you select your input features. 1 indicates positive chances percentage, 0 negative chances percentage.*')
         st.write(prediction_proba)
 
         feedback = st.sidebar.slider('**How much would you rate this app?**',min_value=0,max_value=5,step=1)
@@ -142,8 +152,7 @@ def run():
         if feedback:
             st.header("Thank you for rating the app!")
             st.info("Caution: This is just a prediction and not doctoral advice. Kindly see a doctor if you feel the symptoms persist.")
-        
-        st.write("[Kaggle Link to Data Set](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset)")
+            st.write("[Kaggle Link to Data Set](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset)")
     
 # This code allows you to run the app standalone
 # as well as part of a library of apps
