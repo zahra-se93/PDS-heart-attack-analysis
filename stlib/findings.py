@@ -8,7 +8,7 @@ def run():
 
     st.markdown("# Findings")
     st.write("""
-             Write about the findings we found for Heart Attack Analysis
+             Write about the findings we found for Heart Attack Analysis test
             """
     )
     
