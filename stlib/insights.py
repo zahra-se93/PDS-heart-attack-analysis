@@ -388,8 +388,9 @@ def run():
     st.sidebar.write("""
                      * Azzim
                      * Kelvin
-                     * Ruobing
-                     * Jiangmeng
+                     * Liu Zening
+                     * Zheng Jiangmeng
+                     * Wang Zhen Hao
                      """)
 
 # This code allows you to run the app standalone
