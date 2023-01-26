@@ -16,7 +16,13 @@ def run():
     
     heart_raw = pd.read_csv('dataset/heart_cleaned.csv')
     
-    with tab1:    
+    with tab1:
+        st.subheader('Based on the observed Kernel Distribution Estimation Plot, those with higher chances of heart attack are:')
+        st.write('Aged 40-60 years old')
+        st.write('With resting blood sugar between 120-140 (mm Hg)')
+        st.write('With cholesterol between 200-250 (mg/dl)')
+        st.write('With maximum achieved heart rate between 150-175')
+        st.write('With ST depression induced by exercise relative to rest (oldpeak) between 0-1')
         fig = plt.figure(figsize=(16,16))
         gs = fig.add_gridspec(5,2)
         gs.update(wspace=0.5, hspace=0.5)
@@ -152,6 +158,12 @@ def run():
         st.pyplot(fig)
     
     with tab2:
+        st.subheader('Based on the observed Box Plot, those with higher chances of heart attack are:')
+        st.write('Aged 45-60 years old')
+        st.write('With resting blood sugar between 120-140 (mm Hg)')
+        st.write('With cholesterol between 200-250 (mg/dl)')
+        st.write('With maximum achieved heart rate between 150-170')
+        st.write('With ST depression induced by exercise relative to rest (oldpeak) between 0-1')
         fig = plt.figure(figsize=(18,16))
         gs = fig.add_gridspec(2,3)
         gs.update(wspace=0.3, hspace=0.15)
@@ -233,6 +245,15 @@ def run():
         st.pyplot(fig)
     
     with tab3:
+        st.subheader('Based on the observed Count Plot, those with higher chances of heart attack are:')   
+        st.write('Male')
+        st.write('Not having exercise induced angina')
+        st.write('People with 0 major vessels') 
+        st.write('having non-Anginal chest pain')
+        st.write('having fasting blood sugar < 120 mg/dl') 
+        st.write('with resting electrocardiographic results, re=1, which is having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)')
+        st.write('with slope=2, which refers to flat slope')
+        st.write('with Thalassemia rate, thall = 2')
         fig = plt.figure(figsize=(20,15))
         gs = fig.add_gridspec(3,3)
         gs.update(wspace=0.5, hspace=0.25)
@@ -346,6 +367,16 @@ def run():
         st.pyplot(fig)
         
     with tab4:
+        st.subheader('Based on the Correlation HeatMap, the features that have high impact in resulting in heart attack are:')
+        st.write('Chest Pain type (cp)')
+        st.write('Maximum heart rate achieved (thalach)')
+        st.write('Slope of the peak exercise ST segment (slp)')
+        st.write('____________')
+        st.write('Note: Based on the colours of the below features in the heatmap, indicate that there is a strong negative correlation between these features and the target output:') 
+        st.write('Exercise induced angina (exng)') 
+        st.write('ST depression induced by exercise relative to rest (oldpeak)')
+        st.write('Number of major vessels (caa)')
+        st.write('Thalassemia rate (thall)')
         cor_mat=heart_raw.corr()
         fig,ax=plt.subplots(figsize=(15,10))
         sns.heatmap(cor_mat,annot=True,linewidths=0.5,fmt=".3f")
