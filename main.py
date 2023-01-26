@@ -10,7 +10,6 @@ from stlib import insights
 from stlib import predictionApp
 
 with st.sidebar:
-    st.markdown('''# Data Alliance''')
     page = st.selectbox('Pages:',['Overview','Insights', 'Heart Disease Prediction']) 
 
 if page == 'Overview':

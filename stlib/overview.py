@@ -1,7 +1,7 @@
 def run():
     import streamlit as st
     from PIL import Image
-    import time
+    from streamlit_extras.add_vertical_space import add_vertical_space
     
     # st.markdown("# Overview")
         
@@ -24,7 +24,13 @@ def run():
         st.image(Image.open('assets/info_graph_1.png'))
     
             
-    st.sidebar.header("Overview Sidebar")
+    st.sidebar.header("WebApp by Data Alliance:")
+    st.sidebar.write("""
+                     * Azzim
+                     * Kelvin
+                     * Ruobing
+                     * Jiangmeng
+                     """)
 
 # This code allows you to run the app standalone
 # as well as part of a library of apps

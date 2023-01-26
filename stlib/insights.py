@@ -384,7 +384,13 @@ def run():
 
         st.write(fig)
               
-    st.sidebar.header("Findings Sidebar")
+    st.sidebar.header("WebApp by Data Alliance:")
+    st.sidebar.write("""
+                     * Azzim
+                     * Kelvin
+                     * Ruobing
+                     * Jiangmeng
+                     """)
 
 # This code allows you to run the app standalone
 # as well as part of a library of apps
